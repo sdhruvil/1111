@@ -1,0 +1,89 @@
+#include<stdio.h>
+
+
+int main()
+{
+	int n,a[20],i,j,sum=0,mean,temp,median,mode[20],k,max=0;
+//	clrscr();
+
+	printf("\n enter the Limit : ");
+	scanf("%d",&n);
+       
+	printf("\nEnter the Numbers for mode : ");
+
+	for(i=1;i<=n;i++)
+		scanf("%d",&a[i]);
+
+	for(i=1;i<=n;i++)
+		sum=sum+a[i];
+
+	mean=sum/n;
+
+	printf("\n The Mean is : %d ",mean);
+
+	printf("\n\n\n Enter the value for median :\n");
+	for(i=0;i<n;i++)
+		scanf("%d",&a[i]);
+
+	for(i=0;i<n-1;i++)
+	{
+		for(j=i+1;j<=n;j++)
+		{
+			if(a[i]>a[j])
+			{
+				temp=a[i];
+				a[i]=a[j];
+				a[j]=temp;
+			}
+		}
+	}
+
+	if(n%2==0)
+	{
+		median=(a[(n+1)/2]+a[n/2])/2;
+	}
+	else
+	{
+		median=a[n/2];
+	}
+
+	printf("\n The Median is : %d",median);
+     
+
+	printf("\n Enter the number for mod : ");
+	for(i=0;i<n;i++)
+		scanf("%d",&a[i]);
+	for(i=0;i<n-1;i++)
+	{
+		temp=0;
+		for(j=i+1;j<n;j++)
+		{
+			if(a[i]==a[j])
+			temp++;
+		}
+
+		if(temp>max)
+		{
+			k=0;
+			max=temp;
+			mode[k]=a[i];
+		}
+		else if(temp==max)
+		{
+			k++;
+			mode[k]=a[i];
+		}
+	}
+	if(max==0)
+		printf("\n There is no mode ");
+	else
+	{
+		printf("\n mode value : ");
+
+	for(i=0;i<=k;i++)
+		printf("%d",mode[i]);
+	}
+
+//	getch();
+	return 0;
+}
